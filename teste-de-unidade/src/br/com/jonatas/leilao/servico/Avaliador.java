@@ -1,12 +1,12 @@
-package br.com.caelum.leilao.servico;
+package br.com.jonatas.leilao.servico;
+
+import br.com.jonatas.leilao.dominio.Lance;
+import br.com.jonatas.leilao.dominio.Leilao;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import br.com.caelum.leilao.dominio.Lance;
-import br.com.caelum.leilao.dominio.Leilao;
 
 public class Avaliador {
 
@@ -17,7 +17,7 @@ public class Avaliador {
 	public void avalia(Leilao leilao) {
 		
 		if(leilao.getLances().size() == 0) {
-			throw new RuntimeException("N‹o Ž poss’vel avaliar um leil‹o sem lances!");
+			throw new RuntimeException("Nï¿½o ï¿½ possï¿½vel avaliar um leilï¿½o sem lances!");
 		}
 		
 		for(Lance lance : leilao.getLances()) {
