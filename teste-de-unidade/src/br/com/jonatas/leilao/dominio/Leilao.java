@@ -1,10 +1,13 @@
-package br.com.caelum.leilao.dominio;
+package br.com.jonatas.leilao.dominio;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
+@Getter @Setter
 public class Leilao {
 
 	private String descricao;
@@ -45,31 +48,11 @@ public class Leilao {
 		return lances.get(lances.size()-1);
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public List<Lance> getLances() {
-		return Collections.unmodifiableList(lances);
-	}
-
-	public Calendar getData() {
-		return (Calendar) data.clone();
-	}
-
 	public void encerra() {
 		this.encerrado = true;
 	}
 	
 	public boolean isEncerrado() {
 		return encerrado;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public int getId() {
-		return id;
 	}
 }
