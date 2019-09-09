@@ -2,12 +2,14 @@ package br.com.jonatas.leilao.servico;
 
 import br.com.jonatas.leilao.dominio.Lance;
 import br.com.jonatas.leilao.dominio.Leilao;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+@Getter
 public class Avaliador {
 
 	private double maiorDeTodos = Double.NEGATIVE_INFINITY;
@@ -39,17 +41,5 @@ public class Avaliador {
 			}
 		});
 		maiores = maiores.subList(0, maiores.size() > 3 ? 3 : maiores.size());
-	}
-
-	public List<Lance> getTresMaiores() {
-		return maiores;
-	}
-	
-	public double getMaiorLance() {
-		return maiorDeTodos;
-	}
-	
-	public double getMenorLance() {
-		return menorDeTodos;
 	}
 }
