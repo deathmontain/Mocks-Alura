@@ -1,4 +1,4 @@
-package br.com.caelum.leilao.dominio;
+package br.com.jonatas.leilao.dominio;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;

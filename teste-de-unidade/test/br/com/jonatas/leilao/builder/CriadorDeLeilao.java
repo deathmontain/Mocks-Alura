@@ -1,12 +1,12 @@
-package br.com.caelum.leilao.builder;
+package br.com.jonatas.leilao.builder;
+
+import br.com.jonatas.leilao.dominio.Lance;
+import br.com.jonatas.leilao.dominio.Leilao;
+import br.com.jonatas.leilao.dominio.Usuario;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import br.com.caelum.leilao.dominio.Lance;
-import br.com.caelum.leilao.dominio.Leilao;
-import br.com.caelum.leilao.dominio.Usuario;
 
 public class CriadorDeLeilao {
 

@@ -1,4 +1,4 @@
-package br.com.caelum.leilao.servico;
+package br.com.jonatas.leilao.servico;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.caelum.leilao.builder.CriadorDeLeilao;
+import br.com.jonatas.leilao.builder.CriadorDeLeilao;
 import br.com.caelum.leilao.dominio.Lance;
 import br.com.caelum.leilao.dominio.Leilao;
 import br.com.caelum.leilao.dominio.Usuario;
@@ -25,8 +25,8 @@ public class AvaliadorTest {
 	@Before
 	public void criaAvaliador() {
 		this.leiloeiro = new Avaliador();
-		this.joao = new Usuario("Jo‹o");
-		this.jose = new Usuario("JosŽ");
+		this.joao = new Usuario("Joï¿½o");
+		this.jose = new Usuario("Josï¿½");
 		this.maria = new Usuario("Maria");
 	}
 	
@@ -58,7 +58,7 @@ public class AvaliadorTest {
  
     @Test
     public void deveEntenderLeilaoComApenasUmLance() {
-    	Usuario joao = new Usuario("Jo‹o");
+    	Usuario joao = new Usuario("Joï¿½o");
         Leilao leilao = new Leilao("Playstation 3 Novo");
          
         leilao.propoe(new Lance(joao, 1000.0));
