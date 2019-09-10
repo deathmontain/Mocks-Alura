@@ -24,14 +24,14 @@ public class EncerradorDeLeilaoTeste {
         List<Leilao> leiloesAntigos = Arrays.asList(leilao1, leilao2);
 
         LeilaoDao daoFalso = mock(LeilaoDao.class);
-        when(daoFalso.correntes()).thenReturn(leiloesAntigos)
+        when(daoFalso.correntes()).thenReturn(leiloesAntigos);
 
-        EncerradorDeLeilao encerrador = new EncerradorDeLeilao();
+        EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso);
         encerrador.encerra();
 
         Assert.assertEquals(2, encerrador.getTotalEncerrados());
         Assert.assertTrue(leilao1.isEncerrado());
-        Assert.assertTrue(leilao2.get(1).isEncerrado());
+        Assert.assertTrue(leilao2.isEncerrado());
     }
 
 }

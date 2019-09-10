@@ -1,7 +1,7 @@
 package br.com.jonatas.leilao.servico;
 
 import br.com.jonatas.leilao.dominio.Leilao;
-import br.com.jonatas.leilao.infra.dao.LeilaoDaoFalso;
+import br.com.jonatas.leilao.infra.dao.LeilaoDao;
 
 import java.util.Calendar;
 import java.util.List;
@@ -9,9 +9,13 @@ import java.util.List;
 public class EncerradorDeLeilao {
 
 	private int total = 0;
+	private final LeilaoDao dao;
+
+	public EncerradorDeLeilao(LeilaoDao dao){
+		this.dao = dao;
+	}
 
 	public void encerra() {
-		LeilaoDaoFalso dao = new LeilaoDaoFalso();
 		List<Leilao> todosLeiloesCorrentes = dao.correntes();
 
 		for (Leilao leilao : todosLeiloesCorrentes) {
