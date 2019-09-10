@@ -1,7 +1,6 @@
 package br.com.jonatas.leilao.servico;
 
 import br.com.jonatas.leilao.dominio.Leilao;
-import br.com.jonatas.leilao.infra.dao.LeilaoDao;
 import br.com.jonatas.leilao.infra.dao.LeilaoDaoFalso;
 
 import java.util.Calendar;
