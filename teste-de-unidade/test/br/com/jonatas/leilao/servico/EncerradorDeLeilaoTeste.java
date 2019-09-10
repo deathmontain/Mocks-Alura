@@ -3,6 +3,7 @@ package br.com.jonatas.leilao.servico;
 import br.com.jonatas.leilao.builder.CriadorDeLeilao;
 import br.com.jonatas.leilao.dominio.Leilao;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
+import br.com.jonatas.leilao.infra.dao.LeilaoDaoFalso;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,10 +16,10 @@ public class EncerradorDeLeilaoTeste {
         Calendar antiga = Calendar.getInstance();
         antiga.set(1999, 1, 20);
 
-        Leilao leilao1 = new CriadorDeLeilao().para("TV de plasma").naData(antiga).constroi();
+        Leilao leilao1 = new CriadorDeLeilao().para("TV 4k").naData(antiga).constroi();
         Leilao leilao2 = new CriadorDeLeilao().para("Fogao elétrico").naData(antiga).constroi();
 
-        LeilaoDao dao = new LeilaoDao();
+        LeilaoDaoFalso dao = new LeilaoDaoFalso();
         dao.salva(leilao1);
         dao.salva(leilao2);
 
