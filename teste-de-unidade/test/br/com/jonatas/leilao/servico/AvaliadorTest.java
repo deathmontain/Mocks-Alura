@@ -1,18 +1,19 @@
 package br.com.jonatas.leilao.servico;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+
 import br.com.jonatas.leilao.builder.CriadorDeLeilao;
 import br.com.jonatas.leilao.dominio.Lance;
 import br.com.jonatas.leilao.dominio.Leilao;
 import br.com.jonatas.leilao.dominio.Usuario;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.List;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItems;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class AvaliadorTest {
 	

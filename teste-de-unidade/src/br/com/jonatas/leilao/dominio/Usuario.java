@@ -1,8 +1,8 @@
 package br.com.jonatas.leilao.dominio;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data
+@EqualsAndHashCode
 public class Usuario {
 
 	private int id;
@@ -15,5 +15,13 @@ public class Usuario {
 	public Usuario(int id, String nome) {
 		this.id = id;
 		this.nome = nome;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
 	}
 }
