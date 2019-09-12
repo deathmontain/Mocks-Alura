@@ -12,7 +12,7 @@ public class GeradorDePagamento {
     private final LeilaoDao leiloes;
     private final Avaliador avaliador;
     private final RepositorioDePagamentos pagamentos;
-    
+
     public GeradorDePagamento(LeilaoDao leiloes, RepositorioDePagamentos pagamentos, Avaliador avaliador) {
         this.leiloes = leiloes;
         this.avaliador = avaliador;
