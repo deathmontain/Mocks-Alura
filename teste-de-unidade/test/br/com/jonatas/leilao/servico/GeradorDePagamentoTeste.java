@@ -54,13 +54,20 @@ public class GeradorDePagamentoTeste {
                 .constroi();
 
         when(leiloes.encerrados()).thenReturn(Arrays.asList(leilao));
-        GeradorDePagamento geradorDePagamento = new GeradorDePagamento(leiloes, pagamentos, new Avaliador());
+
+        Calendar sabado = Calendar.getInstance();
+        sabado.set(2012, Calendar.APRIL, 7);
+
+        when(relogio.hoje()).thenReturn(sabado);
+
+        GeradorDePagamento geradorDePagamento = new GeradorDePagamento(leiloes, pagamentos, new Avaliador(), relogio);
         geradorDePagamento.gera();
 
         ArgumentCaptor<Pagamento> argumento = ArgumentCaptor.forClass(Pagamento.class);
         verify(pagamentos).salva(argumento.capture());
         Pagamento pagamentoGerado = argumento.getValue();
 
-        Assert.assertEquals(Calendar.MONDAY, pagamentoGerado.getData());
+        Assert.assertEquals(Calendar.MONDAY, pagamentoGerado.getData().get(Calendar.DAY_OF_WEEK));
+        Assert.assertEquals(9, pagamentoGerado.getData().get(Calendar.DAY_OF_MONTH));
     }
 }
