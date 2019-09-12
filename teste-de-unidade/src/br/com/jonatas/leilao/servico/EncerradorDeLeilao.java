@@ -11,10 +11,10 @@ public class EncerradorDeLeilao {
 
 	private int total = 0;
 	private final LeilaoDao dao;
-//	private final Carteiro carteiro;
+	private final Carteiro carteiro;
 
-	public EncerradorDeLeilao(LeilaoDao dao){
-//		this.carteiro = carteiro;
+	public EncerradorDeLeilao(LeilaoDao dao, Carteiro carteiro){
+		this.carteiro = carteiro;
 		this.dao = dao;
 	}
 
@@ -26,7 +26,7 @@ public class EncerradorDeLeilao {
 				leilao.encerra();
 				total++;
 				dao.atualiza(leilao);
-				//carteiro.envia(leilao);
+				carteiro.envia(leilao);
 			}
 		}
 	}
