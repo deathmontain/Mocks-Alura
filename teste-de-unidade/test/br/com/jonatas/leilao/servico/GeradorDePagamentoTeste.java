@@ -6,6 +6,7 @@ import br.com.jonatas.leilao.dominio.Pagamento;
 import br.com.jonatas.leilao.dominio.Usuario;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
 import br.com.jonatas.leilao.infra.dao.PagamentosDao;
+import br.com.jonatas.leilao.infra.relogio.Relogio;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -45,6 +46,7 @@ public class GeradorDePagamentoTeste {
     public void deveEmpurrarParaOProximoDiaUtil(){
         LeilaoDao leiloes = mock(LeilaoDao.class);
         PagamentosDao pagamentos = mock(PagamentosDao.class);
+        Relogio relogio = mock(Relogio.class);
 
         Leilao leilao = new CriadorDeLeilao().para("Nintendo Switch")
                 .lance(new Usuario("Joaozinho"), 2000.0)
