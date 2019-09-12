@@ -40,7 +40,7 @@ public class GeradorDePagamento {
     }
 
     private Calendar primeiroDiaUtil() {
-        Calendar data = Calendar.getInstance();
+        Calendar data = relogio.hoje();
         int diaSemana = data.get(Calendar.DAY_OF_WEEK);
 
         if(diaSemana == Calendar.SATURDAY) data.add(Calendar.DAY_OF_MONTH, 2);
