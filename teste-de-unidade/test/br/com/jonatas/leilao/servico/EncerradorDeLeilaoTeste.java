@@ -65,11 +65,13 @@ public class EncerradorDeLeilaoTeste {
         LeilaoDao daoFalso = mock(LeilaoDao.class);
         Carteiro carteiroFalso = mock(Carteiro.class);
         when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1, leilao2, leilao3, leilao4));
+        doThrow(new RuntimeException()).when(daoFalso).atualiza(leilao1);
 
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso, carteiroFalso);
         encerrador.encerra();
-        
+
         verify(daoFalso).atualiza(leilao2);
         verify(carteiroFalso).envia(leilao2);
+        verify(carteiroFalso, times(0)).envia(leilao1);
     }
 }
