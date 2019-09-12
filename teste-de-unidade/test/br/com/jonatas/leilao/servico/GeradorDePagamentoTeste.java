@@ -5,7 +5,7 @@ import br.com.jonatas.leilao.dominio.Leilao;
 import br.com.jonatas.leilao.dominio.Pagamento;
 import br.com.jonatas.leilao.dominio.Usuario;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
-import br.com.jonatas.leilao.infra.dao.RepositorioDePagamentos;
+import br.com.jonatas.leilao.infra.dao.PagamentosDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -18,7 +18,7 @@ public class GeradorDePagamentoTeste {
     @Test
     public void deveGerarPagamentoParaUmLeilaoEncerrado(){
         LeilaoDao leiloes = mock(LeilaoDao.class);
-        RepositorioDePagamentos pagamentos = mock(RepositorioDePagamentos.class);
+        PagamentosDao pagamentos = mock(PagamentosDao.class);
         Avaliador avaliador = mock(Avaliador.class);
 
         Leilao leilao = new CriadorDeLeilao().para("Nintendo")
@@ -39,4 +39,12 @@ public class GeradorDePagamentoTeste {
 
         Assert.assertEquals(2500.0, pagamentoGerado.getValor(), 0.00001);
     }
+
+//    @Test
+//    public void deveEmpurrarParaOProximoDiaUtil(){
+//        LeilaoDao leiloes = mock(LeilaoDao.class);
+//        PagamentosDao pagamentos = mock(PagamentosDao.class);
+//
+//
+//    }
 }

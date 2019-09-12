@@ -3,7 +3,7 @@ package br.com.jonatas.leilao.servico;
 import br.com.jonatas.leilao.dominio.Leilao;
 import br.com.jonatas.leilao.dominio.Pagamento;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
-import br.com.jonatas.leilao.infra.dao.RepositorioDePagamentos;
+import br.com.jonatas.leilao.infra.dao.PagamentosDao;
 
 import java.util.Calendar;
 import java.util.List;
@@ -11,9 +11,9 @@ import java.util.List;
 public class GeradorDePagamento {
     private final LeilaoDao leiloes;
     private final Avaliador avaliador;
-    private final RepositorioDePagamentos pagamentos;
+    private final PagamentosDao pagamentos;
 
-    public GeradorDePagamento(LeilaoDao leiloes, RepositorioDePagamentos pagamentos, Avaliador avaliador) {
+    public GeradorDePagamento(LeilaoDao leiloes, PagamentosDao pagamentos, Avaliador avaliador) {
         this.leiloes = leiloes;
         this.avaliador = avaliador;
         this.pagamentos = pagamentos;
