@@ -24,8 +24,8 @@ public class EncerradorDeLeilaoTeste {
         List<Leilao> leiloesAntigos = Arrays.asList(leilao1, leilao2);
 
         LeilaoDao daoFalso = mock(LeilaoDao.class);
-        when(daoFalso.correntes()).thenReturn(leiloesAntigos);
         Carteiro carteiroFalso = mock(Carteiro.class);
+        when(daoFalso.correntes()).thenReturn(leiloesAntigos);
 
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso, carteiroFalso);
         encerrador.encerra();
@@ -43,12 +43,32 @@ public class EncerradorDeLeilaoTeste {
         Leilao leilao1 = new CriadorDeLeilao().para("Tv de plasma").naData(antiga).constroi();
 
         LeilaoDao daoFalso = mock(LeilaoDao.class);
-        when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1));
         Carteiro carteiroFalso = mock(Carteiro.class);
+        when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1));
 
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso, carteiroFalso);
         encerrador.encerra();
 
         verify(daoFalso, times(1)).atualiza(leilao1);
+    }
+
+    @Test
+    public void deveContinuarAExecucaoMesmoQUandoDaoFalha(){
+        Calendar antiga = Calendar.getInstance();
+        antiga.set(1999, 1, 20);
+
+        Leilao leilao1 = new CriadorDeLeilao().para("TV 4k").naData(antiga).constroi();
+        Leilao leilao2 = new CriadorDeLeilao().para("Fogao elétrico").naData(antiga).constroi();
+        Leilao leilao3 = new CriadorDeLeilao().para("Playstatiob").naData(antiga).constroi();
+        Leilao leilao4 = new CriadorDeLeilao().para("Cama box King").naData(antiga).constroi();
+        List<Leilao> leiloesAntigos = Arrays.asList(leilao1, leilao2, leilao3, leilao4);
+
+        LeilaoDao daoFalso = mock(LeilaoDao.class);
+        Carteiro carteiroFalso = mock(Carteiro.class);
+        when(daoFalso.correntes()).thenReturn(leiloesAntigos);
+
+        EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso, carteiroFalso);
+        encerrador.encerra();
+
     }
 }
