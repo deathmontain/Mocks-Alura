@@ -4,6 +4,7 @@ import br.com.jonatas.leilao.dominio.Leilao;
 import br.com.jonatas.leilao.dominio.Pagamento;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
 import br.com.jonatas.leilao.infra.dao.PagamentosDao;
+import br.com.jonatas.leilao.infra.relogio.Relogio;
 
 import java.util.Calendar;
 import java.util.List;
@@ -13,7 +14,7 @@ public class GeradorDePagamento {
     private final Avaliador avaliador;
     private final PagamentosDao pagamentos;
 
-    public GeradorDePagamento(LeilaoDao leiloes, PagamentosDao pagamentos, Avaliador avaliador) {
+    public GeradorDePagamento(LeilaoDao leiloes, PagamentosDao pagamentos, Avaliador avaliador, Relogio relogio) {
         this.leiloes = leiloes;
         this.avaliador = avaliador;
         this.pagamentos = pagamentos;
