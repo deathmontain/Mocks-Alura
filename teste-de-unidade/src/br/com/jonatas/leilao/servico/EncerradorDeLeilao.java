@@ -1,6 +1,7 @@
 package br.com.jonatas.leilao.servico;
 
 import br.com.jonatas.leilao.dominio.Leilao;
+import br.com.jonatas.leilao.infra.dao.Carteiro;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
 
 import java.util.Calendar;
@@ -10,8 +11,10 @@ public class EncerradorDeLeilao {
 
 	private int total = 0;
 	private final LeilaoDao dao;
+//	private final Carteiro carteiro;
 
 	public EncerradorDeLeilao(LeilaoDao dao){
+//		this.carteiro = carteiro;
 		this.dao = dao;
 	}
 
@@ -23,6 +26,7 @@ public class EncerradorDeLeilao {
 				leilao.encerra();
 				total++;
 				dao.atualiza(leilao);
+				//carteiro.envia(leilao);
 			}
 		}
 	}
@@ -31,7 +35,7 @@ public class EncerradorDeLeilao {
 		return diasEntre(leilao.getData(), Calendar.getInstance()) >= 7;
 	}
 
-	private int diasEntre(Calendar inicio, Calendar fim) {
+	private int diasEntre(Calendar inicio, Calendar  fim) {
 		Calendar data = (Calendar) inicio.clone();
 		int diasNoIntervalo = 0;
 		while (data.before(fim)) {

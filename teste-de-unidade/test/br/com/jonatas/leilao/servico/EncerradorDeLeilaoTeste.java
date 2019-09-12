@@ -2,6 +2,7 @@ package br.com.jonatas.leilao.servico;
 
 import br.com.jonatas.leilao.builder.CriadorDeLeilao;
 import br.com.jonatas.leilao.dominio.Leilao;
+import br.com.jonatas.leilao.infra.dao.Carteiro;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,6 +25,7 @@ public class EncerradorDeLeilaoTeste {
 
         LeilaoDao daoFalso = mock(LeilaoDao.class);
         when(daoFalso.correntes()).thenReturn(leiloesAntigos);
+//        Carteiro carteiroFalso = mock(Carteiro.class);
 
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso);
         encerrador.encerra();
@@ -42,6 +44,7 @@ public class EncerradorDeLeilaoTeste {
 
         LeilaoDao daoFalso = mock(LeilaoDao.class);
         when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1));
+//        Carteiro carteiroFalso = mock(Carteiro.class);
 
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso);
         encerrador.encerra();
