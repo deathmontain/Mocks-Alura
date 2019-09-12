@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 import java.util.Arrays;
+import java.util.Calendar;
 
 import static org.mockito.Mockito.*;
 
@@ -40,11 +41,24 @@ public class GeradorDePagamentoTeste {
         Assert.assertEquals(2500.0, pagamentoGerado.getValor(), 0.00001);
     }
 
-//    @Test
-//    public void deveEmpurrarParaOProximoDiaUtil(){
-//        LeilaoDao leiloes = mock(LeilaoDao.class);
-//        PagamentosDao pagamentos = mock(PagamentosDao.class);
-//
-//
-//    }
+    @Test
+    public void deveEmpurrarParaOProximoDiaUtil(){
+        LeilaoDao leiloes = mock(LeilaoDao.class);
+        PagamentosDao pagamentos = mock(PagamentosDao.class);
+
+        Leilao leilao = new CriadorDeLeilao().para("Nintendo Switch")
+                .lance(new Usuario("Joaozinho"), 2000.0)
+                .lance(new Usuario("Luluzinha"), 2500.0)
+                .constroi();
+
+        when(leiloes.encerrados()).thenReturn(Arrays.asList(leilao));
+        GeradorDePagamento geradorDePagamento = new GeradorDePagamento(leiloes, pagamentos, new Avaliador());
+        geradorDePagamento.gera();
+
+        ArgumentCaptor<Pagamento> argumento = ArgumentCaptor.forClass(Pagamento.class);
+        verify(pagamentos).salva(argumento.capture());
+        Pagamento pagamentoGerado = argumento.getValue();
+
+        Assert.assertEquals(Calendar.MONDAY, pagamentoGerado.getData());
+    }
 }
