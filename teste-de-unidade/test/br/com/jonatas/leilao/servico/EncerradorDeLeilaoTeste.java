@@ -10,8 +10,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class EncerradorDeLeilaoTeste {
     @Test
@@ -34,4 +33,19 @@ public class EncerradorDeLeilaoTeste {
         Assert.assertTrue(leilao2.isEncerrado());
     }
 
+    @Test
+    public void deveAtualizarLeiloesEncerrados(){
+        Calendar antiga = Calendar.getInstance();
+        antiga.set(1999, 1, 20);
+
+        Leilao leilao1 = new CriadorDeLeilao().para("Tv de plasma").naData(antiga).constroi();
+
+        LeilaoDao daoFalso = mock(LeilaoDao.class);
+        when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1));
+
+        EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso);
+        encerrador.encerra();
+
+        verify(daoFalso, times(1)).atualiza(leilao1);
+    }
 }
