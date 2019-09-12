@@ -72,6 +72,6 @@ public class EncerradorDeLeilaoTeste {
 
         verify(daoFalso).atualiza(leilao2);
         verify(carteiroFalso).envia(leilao2);
-        verify(carteiroFalso, times(0)).envia(leilao1);
+        verify(carteiroFalso, never()).envia(any(Leilao.class));
     }
 }
