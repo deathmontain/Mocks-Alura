@@ -61,14 +61,15 @@ public class EncerradorDeLeilaoTeste {
         Leilao leilao2 = new CriadorDeLeilao().para("Fogao elétrico").naData(antiga).constroi();
         Leilao leilao3 = new CriadorDeLeilao().para("Playstatiob").naData(antiga).constroi();
         Leilao leilao4 = new CriadorDeLeilao().para("Cama box King").naData(antiga).constroi();
-        List<Leilao> leiloesAntigos = Arrays.asList(leilao1, leilao2, leilao3, leilao4);
 
         LeilaoDao daoFalso = mock(LeilaoDao.class);
         Carteiro carteiroFalso = mock(Carteiro.class);
-        when(daoFalso.correntes()).thenReturn(leiloesAntigos);
+        when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1, leilao2, leilao3, leilao4));
 
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso, carteiroFalso);
         encerrador.encerra();
-
+        
+        verify(daoFalso).atualiza(leilao2);
+        verify(carteiroFalso).envia(leilao2);
     }
 }
