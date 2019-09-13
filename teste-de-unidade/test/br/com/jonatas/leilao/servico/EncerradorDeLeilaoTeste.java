@@ -4,7 +4,7 @@ import br.com.jonatas.leilao.builder.CriadorDeLeilao;
 import br.com.jonatas.leilao.dominio.Leilao;
 import br.com.jonatas.leilao.infra.dao.Carteiro;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -30,9 +30,9 @@ public class EncerradorDeLeilaoTeste {
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso, carteiroFalso);
         encerrador.encerra();
 
-        Assert.assertEquals(2, encerrador.getTotalEncerrados());
-        Assert.assertTrue(leilao1.isEncerrado());
-        Assert.assertTrue(leilao2.isEncerrado());
+        assertEquals(2, encerrador.getTotalEncerrados());
+        assertTrue(leilao1.isEncerrado());
+        assertTrue(leilao2.isEncerrado());
     }
 
     @Test
