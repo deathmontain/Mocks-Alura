@@ -7,7 +7,7 @@ import br.com.jonatas.leilao.dominio.Usuario;
 import br.com.jonatas.leilao.infra.dao.LeilaoDao;
 import br.com.jonatas.leilao.infra.dao.PagamentosDao;
 import br.com.jonatas.leilao.infra.relogio.Relogio;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -39,7 +39,7 @@ public class GeradorDePagamentoTeste {
 
         Pagamento pagamentoGerado = argumento.getValue();
 
-        Assert.assertEquals(2500.0, pagamentoGerado.getValor(), 0.00001);
+        assertEquals(2500.0, pagamentoGerado.getValor(), 0.00001);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class GeradorDePagamentoTeste {
         verify(pagamentos).salva(argumento.capture());
         Pagamento pagamentoGerado = argumento.getValue();
 
-        Assert.assertEquals(Calendar.MONDAY, pagamentoGerado.getData().get(Calendar.DAY_OF_WEEK));
-        Assert.assertEquals(9, pagamentoGerado.getData().get(Calendar.DAY_OF_MONTH));
+        assertEquals(Calendar.MONDAY, pagamentoGerado.getData().get(Calendar.DAY_OF_WEEK));
+        assertEquals(9, pagamentoGerado.getData().get(Calendar.DAY_OF_MONTH));
     }
 }
